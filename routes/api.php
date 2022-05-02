@@ -17,10 +17,10 @@ use App\Models\Goals;
 */
 
 Route::get('goals', [GoalsController::class, 'index']);
-Route::get('goals/{id}',[GoalsController::class, 'show']);
+Route::get('goals/{goal}',[GoalsController::class, 'show']);
 Route::post('goals',[GoalsController::class, 'store']);
-Route::put('goals/{id}',[GoalsController::class, 'update']);
-Route::delete('goals/{id}',[GoalsController::class, 'delete']);
+Route::put('goals/{goal}',[GoalsController::class, 'update']);
+Route::delete('goals/{goal}',[GoalsController::class, 'delete']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
