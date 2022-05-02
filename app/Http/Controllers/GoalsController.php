@@ -25,15 +25,13 @@ class GoalsController extends Controller
     }
 
     // update a goal using id
-    public function update(Request $request, $id){
-        $goal = Goals::findOrFail($id);
+    public function update(Request $request, Goals $goals) {
         $goal->update($request->all());
         return response()->json($goal, 200);
     }
 
     // delete a goal using id
-    public function delete(Request $request, $id) {
-        $goal = Goals::findOrFail($id);
+    public function delete(Goals $goal) {
         $goal->delete();
         return response()->json([
             'goal' => $goal,
