@@ -19,6 +19,14 @@ class GoalsController extends Controller
 
     // create a goal
     public function store(Request $request) {
+        $body = $request->all();
+
+        if(!$body['title'] || !$body['description']) {
+            return response()->json([
+                'message' => "Title and body is required"
+            ], 200);
+        }
+
         $goal = Goals::create($request->all());
 
         return response()->json($goal, 201);
